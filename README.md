@@ -6,8 +6,8 @@
 docker-compose up
 ```
 
-- swagger: http://localhost:8082/api-docs/
-- result page: swagger: http://localhost:8082/
+- swagger: http://localhost:3000/api-docs/
+- result page: swagger: http://localhost:3000/
 - mongo-express: http://0.0.0.0:8081/
 
 ### to run dev:
@@ -90,3 +90,4 @@ npm run dev
 - open 2 window on browser and make change
 - swagger work only as api rest , don`t launch any even when data is updated
 - is tested only get, post and put method
+- the swagger example json is only for demo propose
