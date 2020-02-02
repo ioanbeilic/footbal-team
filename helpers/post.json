@@ -1,0 +1,14 @@
+{
+  "teams": [
+    {
+      "name": "Team 1"
+    },
+    {
+      "name": "Team 2"
+    }
+  ],
+  "location": "Madrid",
+  "matchDate": "26/11/2020",
+  "matchHour": "15:30",
+  "result": ""
+}

@@ -1,0 +1,217 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "football team api",
+    "description": "api",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Football",
+      "description": "API for football match"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/matches": {
+      "post": {
+        "tags": ["FootballMatch"],
+        "description": "Create new match in system",
+        "parameters": [
+          {
+            "name": "football math",
+            "in": "body",
+            "description": "Match that we want to create",
+            "schema": {
+              "$ref": "#/definitions/FootballMatch"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "New match is created",
+            "schema": {
+              "$ref": "#/definitions/FootballMatch"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": ["FootballMatch"],
+        "summary": "Get all match in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/FootballMatch"
+            }
+          }
+        }
+      }
+    },
+    "/match/{matchId}": {
+      "parameters": [
+        {
+          "name": "matchId",
+          "in": "path",
+          "required": true,
+          "description": "ID of match that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["FootballMatch"],
+        "summary": "Get match with given ID",
+        "responses": {
+          "200": {
+            "description": "Match is found",
+            "schema": {
+              "$ref": "#/definitions/FootballMatch"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete match with given ID",
+        "tags": ["FootballMatch"],
+        "responses": {
+          "200": {
+            "description": "Match is deleted",
+            "schema": {
+              "$ref": "#/definitions/FootballMatch"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update ser match with give ID",
+        "tags": ["FootballMatch"],
+        "parameters": [
+          {
+            "name": "match",
+            "in": "body",
+            "description": "Match with new values of properties",
+            "schema": {
+              "$ref": "#/definitions/FootballMatch"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Match is updated",
+            "schema": {
+              "$ref": "#/definitions/FootballMatch"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "FootballMatch": {
+      "required": ["teams", "location"],
+
+      "properties": {
+        "teams": {
+          "type": "array",
+          "$ref": "#/definitions/Teams"
+        },
+
+        "location": {
+          "type": "string"
+        },
+        "matchDate": {
+          "type": "string"
+        },
+        "matchHour": {
+          "type": "string"
+        },
+        "result": {
+          "type": "string"
+        },
+
+        "goals": {
+          "type": "array",
+          "$ref": "#/definitions/Goal"
+        },
+        "cards": {
+          "type": "array",
+          "$ref": "#/definitions/Cards"
+        }
+      }
+    },
+    "FootballMatches": {
+      "type": "array",
+      "$ref": "#/definitions/FootballMatch"
+    },
+    "Players": {
+      "type": "array",
+      "$ref": "#/definitions/Player"
+    },
+    "Teams": {
+      "type": "array",
+      "$ref": "#/definitions/Team"
+    },
+    "Cards": {
+      "type": "array",
+      "$ref": "#/definitions/Card"
+    },
+    "Player": {
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "Goal": {
+      "required": [],
+      "properties": {
+        "player": {
+          "type": "string",
+          "$ref": "#/definitions/Player"
+        },
+        "hour": {
+          "type": "string"
+        }
+      }
+    },
+    "Card": {
+      "required": ["player", "color"],
+      "properties": {
+        "player": {
+          "type": "string",
+          "$ref": "#/definitions/Player"
+        },
+        "color": {
+          "type": "string",
+          "color": "red | yellow"
+        },
+        "hour": {
+          "type": "string"
+        }
+      }
+    },
+    "Team": {
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "players": {
+          "type": "array",
+          "$ref": "#/definitions/Players"
+        }
+      }
+    }
+  }
+}

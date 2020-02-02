@@ -1,0 +1,17 @@
+{
+  "_id": "5e36fee89cea767be7d0fb82",
+  "teams": [
+    {
+      "_id": "5e36fee89cea767be7d0fb83",
+      "name": "Team 11"
+    },
+    {
+      "_id": "5e36fee89cea767be7d0fb84",
+      "name": "Team 22"
+    }
+  ],
+  "location": "Madrid",
+  "matchDate": "26/11/2020",
+  "matchHour": "15:30",
+  "result": ""
+}

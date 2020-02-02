@@ -1,0 +1,28 @@
+# Use root/example as user/password credentials
+version: "3.3"
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      - "ME_CONFIG_OPTIONS_EDITORTHEME=ambiance"
+    links:
+      - mongo
+
+  app:
+    container_name: football-match
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
